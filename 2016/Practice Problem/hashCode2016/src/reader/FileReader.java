@@ -2,6 +2,7 @@ package reader;
 
 import com.sun.org.apache.regexp.internal.RE;
 
+import java.io.File;
 import java.util.Scanner;
 
 /**
@@ -15,21 +16,26 @@ public class FileReader {
     public Result readFile(String path) throws IllegalFileException{
         int row = 0;
         int colum = 0;
-        String textResult = null;
+        String textResult ="";
         int cont = 0;
 
         try {
-            Scanner sc = new Scanner(path);
+            System.out.println("Reading file...\n");
+            Scanner sc = new Scanner(new File(path));
             while (sc.hasNext()){
                 if (cont == 0) {
                     row = sc.nextInt();
                     colum = sc.nextInt();
                     sc.nextLine();
+                    System.out.println("Row: "+row+" Colum: "+colum+"\n");
                 }else{
-                    textResult += sc.nextLine()+"\n\r";
+                    String textRow = sc.nextLine();
+                    textResult += textRow+"\n\r";
+                    System.out.println(textRow);
                 }
                 cont++;
             }
+            System.out.println("\nEnd file ....");
         }catch (Exception e){
             e.printStackTrace();
             throw new IllegalFileException();

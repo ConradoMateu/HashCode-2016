@@ -27,7 +27,7 @@ public class CharacterEngine {
             for(int colum = 0; colum < C; colum++){
                 char character = textRow.charAt(colum);
                 if (PAINTED_PIXEL == character){
-
+                    //Do something
                 }
             }
         }
